@@ -27,7 +27,7 @@
 
 Numpy 即向量化（vectorization）。
 如果你熟悉Python，向量化就是学Numpy时的难点。
-因为你需要改变思维方式，并熟悉一些新的名词，比如向量、数组、试图以及通用函数等。
+因为你需要改变思维方式，并熟悉一些新的名词，比如向量、数组、视图以及通用函数等。
 
 .. Numpy is all about vectorization. If you are familiar with Python, this is the
 .. main difficulty you'll face because you'll need to change your way of thinking
@@ -35,8 +35,8 @@ Numpy 即向量化（vectorization）。
 .. "ufuncs".
 
 我们从一个简单的例子开始：随机游走（random walk）。
-实现随机游走的一种可选方式，是用面向对象的方法：先定义个 `RandomWalker` 类，
-并写一个 `walk` 方法，该方法每次调用即运行一个随机步，并返回当前位置。
+实现随机游走的一种可选方式，是用面向对象的方法：先定义一个 `RandomWalker` 类，
+并写一个 `walk` 方法，该方法每次调用即运行一个随机步，然后返回当前位置。
 这样实现起来很简单且代码可读，但是很慢：
 
 .. Let's take a very simple example, random walk. One possible object oriented
@@ -156,8 +156,8 @@ Numpy 即向量化（vectorization）。
    >>> timeit("random_walk_faster(n=10000)", globals())
    10 loops, best of 3: 2.21 msec per loop
 
-我们减少了了85%的计算时间，很不错。
-这个版本更大的优势，是可以很简单的过渡到numpy的向量化操作。
+我们减少了85%的计算时间，很不错。
+但这个版本更大的优势，是可以很简单的过渡到numpy的向量化操作。
 我们只需将itertools对应到numpy中的操作即可。
 
 .. We gained 85% of computation-time compared to the previous version, not so
