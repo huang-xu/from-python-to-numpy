@@ -1,8 +1,19 @@
-### From Python to Numpy
+### 从Python到Numpy -- 中文翻译版
+### From Python to Numpy (Simplified Chinese Edition)
+原作版权声明：
+
 Copyright (c) 2017 Nicolas P. Rougier  
 **License**: [Creative Commons Attribution 4.0 International (CC BY-NC-SA 4.0)]
 (https://creativecommons.org/licenses/by-nc-sa/4.0/).  
 **Website**: http://www.labri.fr/perso/nrougier/from-python-to-numpy
+
+--
+
+这是 From Python to Numpy 的中文翻译版。
+这本书主要讲如何在已有Python的知识基础上，学习Numpy。
+主要偏重向量化操作。
+
+--
 
 There are already a fair number of books about Numpy
 (see [bibliography](10-bibliography.rst)) and a legitimate question is to
