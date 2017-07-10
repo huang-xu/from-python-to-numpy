@@ -19,6 +19,8 @@
 
    你可以在命令行或者IPython/Jupyter notebook 中执行下面的代码。
    在上述环境中，可以用IPython的 `%timeit` 命令替代我写的 `custom one <code/tools.py>`_ 。
+   译者：在IPython中用 `%timeit` 的方式，将添加到下文中。
+
 
 ..   You can execute any code below from the `code <code>`_ folder using the
 ..   regular python shell or from inside an IPython session or Jupyter notebook. In
@@ -74,7 +76,15 @@ Numpy 即向量化（vectorization）。
    >>> timeit("[position for position in walker.walk(n=10000)]", globals())
    10 loops, best of 3: 15.7 msec per loop
 
+
+译者：以上代码中，作者用自定义的 `timeit` 测试运行时间，在ipython中可用 `%timeit` 替代:
+
+.. code:: pycon
+
+   >>> walker = RandomWalker()
+   >>> %timeit [position for position in walker.walk(n=10000)]
        
+
 .. **Procedural approach**
 
 **面向过程的方案**
@@ -109,6 +119,8 @@ Numpy 即向量化（vectorization）。
    >>> from tools import timeit
    >>> timeit("random_walk(n=10000)", globals())
    10 loops, best of 3: 15.6 msec per loop
+   >>> # or in ipython 
+   >>> %timeit random_walk(n=10000)
 
    
 .. **Vectorized approach**

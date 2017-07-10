@@ -1,34 +1,50 @@
-Anatomy of an array
+.. Anatomy of an array
+
+数组（array）剖析
 ===============================================================================
 
-.. contents:: **Contents**
+.. contents:: **目录**
    :local:
         
 
-Introduction
+.. Introduction
+
+简介 
 ------------
       
-As explained in the Preface_, you should have a basic experience with numpy to
-read this book. If this is not the case, you'd better start with a beginner
-tutorial before coming back here. Consequently I'll only give here a quick
-reminder on the basic anatomy of numpy arrays, especially regarding the memory
-layout, view, copy and the data type. They are critical notions to
-understand if you want your computation to benefit from numpy philosophy.
+正如前文 Preface_ 所述，本书读者需要对numpy有一定的了解。
+如果不了解numpy，读者最好先学一些numpy入门的知识再读本书。
+因此，我只会简单的回顾 numpy array 的结构，特别是其存储结构（memory
+layout），视图（view）,拷贝（copy）和数据类型（data type）。
+理解这些内容，是理解numpy的设计理念，并从中获益的关键所在。
 
-Let's consider a simple example where we want to clear all the values from an
-array which has the dtype `np.float32`. How does one write it to maximize speed? The
-below syntax is rather obvious (at least for those familiar with numpy) but the
-above question asks to find the fastest operation.
+.. As explained in the Preface_ , you should have a basic experience with numpy to
+.. read this book. If this is not the case, you'd better start with a beginner
+.. tutorial before coming back here. Consequently I'll only give here a quick
+.. reminder on the basic anatomy of numpy arrays, especially regarding the memory
+.. layout, view, copy and the data type. They are critical notions to
+.. understand if you want your computation to benefit from numpy philosophy.
+
+先看一个简单的例子：要清空一个数据类型为 `np.float32` 的数组的内容，如何最大化清空速度？
+下面的代码简单直接，无疑可以完成清空的任务，但是我们还想找到最快的方法。
+
+.. Let's consider a simple example where we want to clear all the values from an
+.. array which has the dtype `np.float32`. How does one write it to maximize speed? The
+.. below syntax is rather obvious (at least for those familiar with numpy) but the
+.. above question asks to find the fastest operation.
 
 .. code-block:: python
 
    >>> Z = np.ones(4*1000000, np.float32)
    >>> Z[...] = 0
 
-If you look more closely at both the dtype and the size of the array, you can
-observe that this array can be casted (i.e. viewed) into many other
-"compatible" data types. By compatible, I mean that `Z.size * Z.itemsize` can
-be divided by the new dtype itemsize.
+如果你了解数据类型（dtype）和数组大小（size），那么应该知道，该数组可以转化（即 视为）其它兼容的数据类型。
+所谓兼容，是指 `Z.size * Z.itemsize` 可以被新的数据类型的 `itemsize` 整除。
+
+.. If you look more closely at both the dtype and the size of the array, you can
+.. observe that this array can be casted (i.e. viewed) into many other
+.. "compatible" data types. By compatible, I mean that `Z.size * Z.itemsize` can
+.. be divided by the new dtype itemsize.
 
 .. code-block:: python
 
@@ -49,16 +65,24 @@ be divided by the new dtype itemsize.
    >>> timeit("Z.view(np.int8)[...] = 0", globals())
    100 loops, best of 3: 630 usec per loop
                 
-Interestingly enough, the obvious way of clearing all the values is not the
-fastest. By casting the array into a larger data type such as `np.float64`, we
-gained a 25% speed factor. But, by viewing the array as a byte array
-(`np.int8`), we gained a 50% factor. The reason for such speedup are to be
-found in the internal numpy machinery and the compiler optimization. This
-simple example illustrates the philosophy of numpy as we'll see in the next
-section below.
+有意思的是，清除该数组内容的最直接的方式，却并不最快。
+通过转换array为占字节更多的`np.float64`类型，可以获得25%的提速。
+而转换为字节型(`np.int8`)，可以获得50%的提速。
+提速的原因将从 numpy 的内部机理和编译器优化中得出。
+这个简单的例子展示了我们下一节要阐述的numpy设计机制。
+
+.. Interestingly enough, the obvious way of clearing all the values is not the
+.. fastest. By casting the array into a larger data type such as `np.float64`, we
+.. gained a 25% speed factor. But, by viewing the array as a byte array
+.. (`np.int8`), we gained a 50% factor. The reason for such speedup are to be
+.. found in the internal numpy machinery and the compiler optimization. This
+.. simple example illustrates the philosophy of numpy as we'll see in the next
+.. section below.
 
 
-Memory layout
+.. Memory layout
+
+存储结构
 -------------
 
 The `numpy documentation
