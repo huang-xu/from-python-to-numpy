@@ -1,5 +1,7 @@
 Introduction
 ===============================================================================
+入门
+===============================================================================
 
 .. contents:: **Contents**
    :local:
@@ -7,8 +9,14 @@ Introduction
 
 Simple example
 --------------
+简单的例子
+--------------
+
+注意
 
 .. note::
+
+   你可以在命令行或者IPython/Jupyter notebook 中执行下面的代码。你可以用IPython的`%timeit`命令替代我写的 `custom one <code/tools.py>`_ 。
 
    You can execute any code below from the `code <code>`_ folder using the
    regular python shell or from inside an IPython session or Jupyter notebook. In

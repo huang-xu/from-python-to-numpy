@@ -1,11 +1,15 @@
 Preface
 ===============================================================================
+前言
+===============================================================================
 
 .. contents:: **Contents**
    :local:
 
 
 About the author
+----------------
+关于作者
 ----------------
 
 `Nicolas P. Rougier`_ is a full-time research scientist at Inria_ which is the
@@ -32,9 +36,14 @@ of the popular article `Ten Simple Rules for Better Figures`_ and a popular
 
 About this book
 ---------------
+关于本书
+---------------
+这本书是用 |ReST|_ 格式撰写，通过 docutils_ 中的 `rst2html.py` 命令编译生成。
 
 This book has been written in |ReST|_ format and generated using the
 `rst2html.py` command line available from the docutils_ python package.
+
+如果你想重新生成本书的html版本，请在本书根目录中运行命令：
 
 If you want to rebuild the html output, from the top directory, type:
 
@@ -43,6 +52,8 @@ If you want to rebuild the html output, from the top directory, type:
    $ rst2html.py --link-stylesheet --cloak-email-addresses \
                  --toc-top-backlinks --stylesheet=book.css \
                  --stylesheet-dirs=. book.rst book.html
+
+源代码在https://github.com/rougier/from-python-to-numpy.
 
 The sources are available from https://github.com/rougier/from-python-to-numpy.
                    
@@ -53,6 +64,11 @@ The sources are available from https://github.com/rougier/from-python-to-numpy.
 
 Prerequisites
 +++++++++++++
+预备知识
++++++++++++++
+
+这不是一本Python入门书，你需要熟悉Python，并了解Numpy。
+如果你没有这些知识，可先学习bibliography_中列举的内容。
 
 This is not a Python beginner guide and you should have an intermediate level in
 Python and ideally a beginner level in numpy. If this is not the case, have
@@ -61,6 +77,10 @@ a look at the bibliography_ for a curated list of resources.
 
 Conventions
 +++++++++++
+排版约定
++++++++++++
+
+我们讲使用一些明明约定：如果没有单独列出，那么numpy, scipy 和 matplotlib三个库的导入方式如下。
 
 We will use usual naming conventions. If not stated explicitly, each script
 should import numpy, scipy and matplotlib as:
@@ -71,6 +91,7 @@ should import numpy, scipy and matplotlib as:
    import scipy as sp
    import matplotlib.pyplot as plt
 
+我们使用的是当前最新版的库，版本如下：
 
 We'll use up-to-date versions (at the date of writing, i.e. January, 2017) of the
 different packages:
@@ -89,6 +110,10 @@ Matplotlib  2.0.0
 
 How to contribute
 +++++++++++++++++
+如何为本书做贡献
++++++++++++++++++
+
+如果你想参与本书创作，你可以：
 
 If you want to contribute to this book, you can:
 
